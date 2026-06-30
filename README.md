@@ -11,15 +11,14 @@ equation can be identified directly from observed probability density data.
 
 A general one-dimensional Fokker–Planck equation has the form
 
-\[
-\frac{\partial \rho}{\partial t}
+
+$$\frac{\partial \rho}{\partial t}
 =
 -\frac{\partial}{\partial x}\bigl(b(x)\rho\bigr)
 +
 \frac{1}{2}
 \frac{\partial^2}{\partial x^2}
-\bigl(\sigma^2(x)\rho\bigr),
-\]
+\bigl(\sigma^2(x)\rho\bigr),$$
 
 where:
 
