@@ -12,19 +12,23 @@ equation can be identified directly from observed probability density data.
 A general one-dimensional Fokker–Planck equation has the form
 
 
-$$\frac{\partial \rho}{\partial t}
+A general one-dimensional Fokker–Planck equation has the form
+
+$$
+\frac{\partial \rho}{\partial t}
 =
 -\frac{\partial}{\partial x}\bigl(b(x)\rho\bigr)
 +
 \frac{1}{2}
 \frac{\partial^2}{\partial x^2}
-\bigl(\sigma^2(x)\rho\bigr),$$
+\bigl(\sigma^2(x)\rho\bigr).
+$$
 
 where:
 
-- \(\rho(x,t)\) is the probability density;
-- \(b(x)\) is the drift coefficient;
-- \(\sigma(x)\) is the diffusion coefficient.
+- $\rho(x,t)$ is the probability density;
+- $b(x)$ is the drift coefficient;
+- $\sigma(x)$ is the diffusion coefficient.
 
 The main objective is to recover the unknown drift and diffusion terms from
 numerically generated or observed density data.
