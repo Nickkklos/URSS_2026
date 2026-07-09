@@ -1,0 +1,514 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+\colorlet{LightBlue}{Cyan!12}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightGray}
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightOrange}
+
+\declaretheoremstyle[name=Example,]{prcpsty}
+\declaretheorem[style=prcpsty,numberlike=theorem]{example}
+\tcolorboxenvironment{example}{colback=LightGreen}
+\declaretheoremstyle[
+    name=Definition,
+    bodyfont=\normalfont
+]{defsty}
+
+\declaretheorem[
+    style=defsty,
+    numberlike=theorem
+]{definition}
+
+\tcolorboxenvironment{definition}{
+    colback=LightBlue
+}
+
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{Template Title}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Subtitle} \vspace*{10\baselineskip}}
+		}
+\date{}
+\author{\textbf{Author} \\ 
+		Who? \\
+		Where? \\
+		When?}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+
+
+
+
+% Maybe I need to add one more part: Examples.
+% Set style and colour later.
+
+
+
+\begin{definition}\textbf{(Stochastic process)}
+Let T be an ordered set, $(\Omega,\mathcal{F},\mathbb{P})$ a probability space, and $(E,\mathcal{G})$ a measurable space. A stochastic process is a collection of random variables $X=\{X_t:t\in T\}$ such that for each fixed $t\in T$, $X_t$ is a random variable from $(\Omega,\mathcal{F},\mathbb{P})$ to $(E,\mathcal{G})$. The set $\Omega$ is known as the sample space, where $E$ is the state space of the stochastic process $X_t$.
+\end{definition}
+
+A stochastic process $X$ may be viewed as a function of both $t\in T$ and $\omega \in \Omega$. We will sometimes write $X(t),X(t,\omega)$ or $X_t(\omega)$. For a fixed sample point $\omega \in \Omega$, the function $X_t(\omega):T\to E$ is called a sample path(realisation, trajectory) of the process of $X$.
+
+\begin{definition} \textbf{(finite-dimensional distributions)}
+The finite-dimensional distributions(FDDs) of a stochastic process are the distributions of the $E^k$-valued random variables $(X(t_1),X(t_2),\dots,X(t_k))$ for an arbitrary positive integer $k$ and aribitrary times $t_i \in T$, $i\in\{1,\dots,k\}$:
+$$F(\boldsymbol{x})=\mathbb{P}(X(t_i) \leq x_i , \ i=1,\dots,k),$$
+with $\boldsymbol{x}=(x_1,\dots x_k).$
+\end{definition}
+\begin{definition}
+    A one-dimensional continuous-time Gaussian process is a stochastic process for which $E=\mathbb{R}$ and all the FDDs are Gaussian, i.e., every finite-dimensional vector $(X_{t_1},X_{t_2},\dots,X_{t_k})$ is an $\mathcal{N}(\mu_k,K_k)$ random variable for some vector $\mu_k$ and a symmetric non-negative definite matrix $K_k$ for all $k=1,2,\dots$ and for all $t_1,t_2,\dots,t_k$.
+\end{definition}
+\begin{definition}
+    A stochastic process is called (strictly) stationary if all FDDs are invariant under time translation: for every integer $k$ and for all times $t_i\in T$, the distribution of $(X(t_1),X(t_2),\dots,X(t_k))$ is equal to that of $(X(s+t_1),X(s+t_2),\dots,X(s+t_k))$ for every $s$ such that $s+t_i \in T$ for all $i \in \{1,\dots,k\}$. In other words,
+    $$\mathbb{P}(X_{(t_1+s)} \in A_1,\dots ,X_{(t_k+s)} \in A_k) = \mathbb{P}(X_{t_1} \in A_1, \dots, X_{t_k} \in A_k),\ s\in T.$$
+\end{definition}
+
+\begin{definition}
+    A stochastic process $X_t \in L^2$ is called second-order stationary or weakly stationary if the first moment $\mathbb{E}X_t$ is a constant and the covariance function $\mathbb{E}(X_t-\mu)(X_s-\mu)$ depends only on the difference $t-s$:
+    $$\mathbb{E}X_t=\mu,\qquad \mathbb{E}((X_t-\mu)(X_s-\mu))=C(t-s).$$
+\end{definition}
+
+
+\begin{definition}
+    A one-dimensional standard \textit{Brownian motion} $W(t):\mathbb{R^+\to R}$ is a real-valued stochastic process with almost surely continuous paths such that $W(0)=0$, it has independent increments, and for every $t>s\geq0$, the increment $W(t)-W(s)$ has a Gaussian distribution with mean $0$ and variance $t-s$.
+    A standard $d$-dimensional standard Brownian motion $W(t):\mathbb{R}^+\to \mathbb{R}^d$ is a vector of $d$ independent one-dimensional Brownian motions:
+    $$W(t)=(W_1(t),W_2(t),\dots,W_d(t)),$$
+    where $W_i(t), i=1,\dots,d,$ are independent one-dimensional Brownian motions.
+\end{definition}
+\subsection*{The Ornstein-Uhlenbeck Process}
+A real-valued Gaussian stationary process defined on $\mathbb{R}$ with correlation function given by the following is called a stationary \textit{Ornstein-Uhlenbeck process}
+$$C(t)=C(0)e^{-\alpha |t|}, \qquad \alpha>0$$
+where $C(0)=\frac{D}{\alpha}$ with $D>0$.
+\subsection*{Diffusion process}
+Roughly speaking, a Markov process is a stochastic process that retains no memory of where it has been in the past: only the current state of a Markov process can influence where it will go next. More precisely, a Markov process is a stochastic process whose past and future are statistically independent, conditioned on its present state.
+
+\noindent We define a continuous-time Markov process with state space $\mathbb{R}$ as a stochastic process whose future depends on its present state and not on how it got there:
+$$\mathbb{P}(X_{t+h}\in\Gamma | \{X_s,s\leq t\}) = \mathbb{P}(X_{t+h}|X_t)$$
+for all Borel sets $\Gamma$. We will only consider the continuous-time Markov process for which a \textit{conditional probability} density exists:
+\begin{equation}
+\mathbb{P}(X_{t+h}\in \Gamma |X_t)=\int_{\Gamma} p(y,t+h|x,t)dy.\label{eq:trans den}
+\end{equation}
+The Markov property enables us to obtain an evolution equation for the transition probability density defined in \eqref{eq:trans den}. This equation is the Chapman-Kolmogorov equation. Using this equation, we can study the evolution of a Markov process.
+
+
+
+\begin{example}
+    Brownian motion is a Markov process with conditional probability density given by the following formula:
+    \begin{equation}
+        \mathbb{P}(W_{t+h} \in \Gamma |W_t=x) = \int_{\Gamma}\frac{1}{\sqrt{2\pi h}}\exp{\left(-\frac{|x-y|^2}{2h}\right)} \label{eq:brownian den}
+    \end{equation}
+    The Markov property of Brownian motion follows from the fact that it has independent increments.
+\end{example}
+\begin{example}
+    The stationary Ornstein-Uhlenbeck process $V_t=e^{-t}W(e^{2t})$ is a Markov process with conditional probability density
+    \begin{equation}
+        p(y,t|x,s)=\frac{1}{\sqrt{2\pi (1-e^{-2(t-s)})}}\exp\left(-\frac{|y-xe^{-(t-s)^2}|}{2(1-e^{-2(t-s)})}\right)
+    \end{equation}
+\end{example}
+We will be concerned mostly with time-homogeneous Markov processes,i.e., processes for which the conditional probabilities are invariant under time shifts.
+Consider the case a continuous-time Markov process with continuous state space and with continuous paths. As we have seen in above two examples, Brownian motion is such a process. The conditional probability density of the Brownian motion \eqref{eq:brownian den} is the fundamental solution of the diffusion equation:
+\begin{equation}
+    \partial_t p=\frac{1}{2}\partial_{yy}p, \quad \lim_{t \to s} p(y,t|x,s)=\delta(y-x).
+\end{equation}
+Similarly, the conditional distribution of the Ornstein-Uhlenbeck process satisfies the initial value problem 
+\begin{equation}
+    \partial_t p=\partial_y(yp)+\frac{1}{2}\partial_{yy}p, \quad \lim_{t \to s} p(y,t|x,s)=\delta(y-x).
+\end{equation}
+Brownian motion and the Ornstein-Uhlenbeck process are examples of a diffusion process: a continuous-time Markov process with continuous paths.
+\subsection*{Markov process}
+The filtration generated by our stochastic process $X_t$, where $X_t$ is :
+$$\mathcal{F}_t^X:=\sigma(X_s:s\leq t).$$
+\begin{definition}
+    Let $X_t$ be a stochastic process defined on a probability space $(\Omega,\mathcal{F},\mu)$ with values in $\mathbb{R}^d$, and let $\mathcal{F_t}^X$ be the filtration generated by $\{X_t:t \in \mathbb{R}_+\}$. Then $\{X_t:t \in \mathbb{R}_+\}$ is a Markov process if
+    $$\mathbb{P}(X_t\in \Gamma |\mathcal{F}_t^X)= \mathbb{P}(X_t \in \Gamma|X_s)$$
+    for all $t,s\in T$ with $t\geq s$, and $\Gamma\in \mathcal{B}(\mathbb{R}^d)$.
+\end{definition}
+
+
+\subsection*{Chapman-Kolmogorov equation}
+With every continuous-time Markov process $X_t$ defined in a probability space $(\Omega,\mathcal{F}, \mathbb{P})$ and state space $(\mathbb{R}^d,\mathcal{B})$, we can associate the \textit{transition function} 
+$$P(\Gamma,t |X_s,s):= \mathbb{P}[X_t\in \Gamma|\mathcal{F}_s^X],$$
+for all $t,s\in \mathbb{R}_+$ with $t\geq s$ and all $\Gamma \in \mathcal{B}(\mathbb{R}^d).$ It is a function of four arguments: the initial time $s$ and position $X_s$, and the final time $t$ and the set $\Gamma$. The transition function $P(\Gamma,t|x,s)$ is, for fixed $t,x,s$, a probability measure on $\mathbb{R}^d$ with $P(\mathbb{R}^d,t|x,s)=1$;
+it is $\mathbb{R}^d$-measurable in $x$, for fixed $t,s,\Gamma$, and satisfies the Chapman-Kolmogorov equation
+\begin{equation*}
+   P(\Gamma,t|x,s)=\int_{\mathbb{R}^d} P (\Gamma,t|y,u)P(dy,u|x,s) 
+\end{equation*}
+for all $x \in \mathbb{R}^d$, $\Gamma\in \mathcal{B}(\mathbb{R}^d)$, and $s,u,t \in \mathbb{R}_+$ with $s \leq u \leq t$. Assume that $X_S=x.$ Since $\mathbb{P}(X_t\in \Gamma |\mathcal{F}_s^X) = \mathbb{P}(X_t\in \Gamma|X_S),$ we can write
+\begin{equation*}
+    P(\Gamma,t|x,s)=\mathbb{P}(X_t \in \Gamma|X_s = x).
+\end{equation*}
+We consider Markov processes whose transition function has a density with respect to the Lebesgue measure:
+\begin{equation*}
+    P(\Gamma,t|x,s)=\int_{\Gamma}p(y,t|x,s)dy
+\end{equation*}
+We will refer to $p(y,t|x,s)$ as the transition probability density. It is a function of four arguments: the initial position and time $x,s$, and the final position and time $y,t$. The Chapman-Kolmogorov equation becomes
+\begin{equation*}
+    \int_{\Gamma}p(y,t|x,s)dy=\int_{\mathbb{R}^d}\int_{\Gamma} p(y,t|z,u)p(z,u|x,s)dydz,
+\end{equation*}
+For time-homogeneous Markov processes we can fix the initial time, s=0. The Chapman-Kolmogorov equation for a time-homogeneous Markov process then becomes 
+\begin{equation}
+    P(t+s,x,\Gamma):=P(\Gamma,t|x,s)=P(\Gamma,t-s|x,0)=\int_{\mathbb{R}^d}P(s,x,dz)P(t,z,\Gamma).\label{eq:chap}
+\end{equation}
+
+Given the initial distribtuion $\nu$ and the transition function $P(x,t,\Gamma)$ of a Markov process $X_t$
+, we can calculate the probability of finding $X_t$ in a set $\Gamma$ at time $t$:
+\begin{equation*}
+    \mathbb{P}(X_t \in \Gamma)=\int_{\mathbb{R}^d}P(x,t,\Gamma)\nu(dx)
+\end{equation*}
+
+\subsection*{The Generator of a Markov Process}
+Let $X_t$ denote a time-homogeneous Markov process. The Chapman-Kolmogorov equation \eqref{eq:chap} suggests that a time-homogeneous Markov process can be described through a semigroup of operators,i.e., a one-parameter family of linear operators with the properties 
+$$P_0=I\qquad P_{t+s}=P_t \circ P_s \qquad \forall t,s\geq 0$$
+Indeed, let $P(t,\cdot,\cdot)$ be the transition function of a homogeneous Markov process and let $f\in C_b(\mathbb{R}^d)$, the space of continuous bounded functions on $\mathbb{R}^d$, and defined the operator:
+\begin{equation}
+    (P_tf)(x):=\mathbb{E}(f(X_t)|X_0=x)=\int_{\mathbb{R}^d}f(y)P(t,x,dy). \label{eq:semi}
+\end{equation}
+This is a linear operator with
+$$P_0f(x)=f(x),$$
+which means that $P_0=I$. Furthermore,
+\begin{align*}
+P_{t+s}(f)(x)& =\int_{\mathbb{R}^d} f(y)P(t+s,x,dy)=\int_{\mathbb{R}^d} \int_{\mathbb{R}^d} f(y) P(s,z,dy)P(t,x,dz)\\
+&= \int_{\mathbb{R}^d} \big(\int_{\mathbb{R}^d} f(y)P(s,z,dy)\big) P(t,x,dz) = \int_{\mathbb{R}^d}
+    (P_sf)(z)P(t,x,dz)\\
+    &=(P_t \circ P_s f)(x).
+\end{align*}
+Consequently,
+$$P_{t+s}=P_t \circ P_s$$
+
+Let now $X_t$ be a time-homogeneous Markov process in $\mathbb{R}^d$, and let $P_t$ denote the corresponding semigroup defined in \eqref{eq:semi}. We consider this semigroup acting on continuous bounded functions and assume that $P_t f$ is also a $C_b(\mathbb{R}^d)$ function. We defined by $\mathcal{D}(\mathcal{L)}$ the set of all $f\in C_b(E)$ such that the strong limit
+\begin{equation}
+    \mathcal{L}f:= \lim_{t \to 0} \frac{P_tf-f}{t} \label{eq:gen}
+\end{equation}
+exsits. The operator $\mathcal{L}:\mathcal{D}(\mathcal{L)}\to C_b(\mathbb{R}^d)$ is called the infinitesimal generator of the operator semigroup $P_t$. We will also refer to $\mathcal{L}$ as the generator of the Markov process $X_t$.
+The semigroup property and the definition of the generator of a Markov semigroup
+\eqref{eq:gen} imply that formally, we can write
+$$P_t = e^{t\mathcal{L}}.$$
+Consider the function $u(x,t):=(P_tf)(x) =\mathbb{E}(f(X_t)|X_0=x).$ We calculate its time derivative:
+\begin{align*}
+    \partial_t u &= \frac{d}{dt}(P_tf)=\frac{d}{dt}\big(e^{t\mathcal{L}}f\big)\\
+    &=\mathcal{L} \big (e^{t\mathcal{L}}f \big) = \mathcal{L}P_t f =\mathcal{L}u.
+\end{align*}
+Furthermore, $u(x,0) = P_0 f(x)=f(x)$. Consequently, $u(x,t)$
+satisfies the initial value problem
+\begin{align}
+    \partial_t u & =\mathcal{L}u,\\
+    u(x,0)&= f(x).
+    \label{eq:back}
+\end{align}
+Equation \eqref{eq:back} is the \textit{backward Kolmogorov equation}. It governs the evolution of the expectation of an observable $f \in C_b(\mathbb{R}^d)$. At this level, this is formal, since we do not have a formula for the generator $\mathcal{L}$ of the Markov semigroup. When the Markov process is the solution of a stochastic differential equation, then the generator is a second-order elliptic differential operator, and the backward Kolmogorov equation becomes an initial value problem for a parabolic partial differential equation.
+
+\subsection*{The Adjoint Semigroup}
+The semigroup $P_t$ acts on bounded continuous functions. We can also define the adjoint semigroup $P_t^*$, which acts on probability measures:
+
+\begin{equation}
+P_t^*\mu(\Gamma) = \int_{\mathbb{R}^d} \mathbb{P}(X_t \in \Gamma|X_0=x)d\mu(x)=\int_{\mathbb{R}^d} P(t,x,\Gamma)d\mu(x). \label{eq:adjoint}
+\end{equation}
+
+
+The image of a probability measure $\mu$ under $P_t^*$ is again a probability measure. The operators $P_t$ and $P_t^*$ are (formally) adjoint in the $L^2$-sense:
+\begin{equation}
+    \int_{\mathbb{R}}P_tf(x)d\mu(x) = \int_{\mathbb{R}} f(x) d(P_t^*\mu)(x).
+\end{equation}
+We can write
+$$P_t^* = e^{t\mathcal{L}^*},$$
+where $\mathcal{L}^*$is the $L^2$-adjoint of the generator of the process:
+$$\int\mathcal{L}fhdx=\int f \mathcal{L}^* h dx$$
+Let $X_t$ be a Markov process with generator $P_t$ with $X_0 \sim  \mu,$ and let $P_t^*$ denote the adjoint semigroup defined in \eqref{eq:adjoint}. We define
+$$\mu_t:=P_t^*\mu.$$
+This is the \textit{law} of the Markov process. An argument similar to that used in the derivation of the backward Kolmogorov equation \eqref{eq:back} enables us to obtain an equation for the evolution of $\mu_t$: 
+\begin{equation}
+    \partial_t \mu_t = \mathcal{L}^* \mu_t, \ \mu_0=\mu
+\end{equation}
+Assuming that the initial distribution $\mu$ and the law of the process $\mu_t$ each have a density with respect to Lebesgue measure, denoted by $\rho_0(\cdot)$ and $\rho(\cdot,t)$ respectively, this equation becomes 
+\begin{equation}
+    \partial_t \rho =\mathcal{L}^*\rho, \quad \rho(y,0)=\rho_0(y).
+    \label{eq:forward}
+\end{equation}
+This is the \textit{forward Kolmogorov equation}. When the Markov process starts at $X_0=x$, deterministic, the initial for the Fokker-Planck equation becomes $\rho_0 = \delta(x-y)$. As with the backward Kolmogorov equation \eqref{eq:back}, this equation is still formal, since we do not have a formula for the adjoint $\mathcal{L}^*$ of generator of the Markov process $X_t$.
+\subsection*{Diffusion Process}
+\begin{definition}
+    A Markov process $X_t$ in $\mathbb{R}$ with transition function $P(\Gamma,t|x,s)$ is called a diffusion process if the following conditions are satisfied:
+    \begin{enumerate}
+        \item \textbf{(Continuity)} For every $x$ and every $\epsilon > 0$,
+        \begin{equation}
+            \int_{|x-y|>\epsilon} P(dy,t|x,s)=o(t-s),
+        \end{equation}
+        uniformly over $s < t$.
+        \item \textbf{(Definition of drift coefficient)} There exists a function $b(x,s)$ such that for every $x$ and every $\epsilon>0$,
+        \begin{equation}
+            \int_{|x-y|\leq\epsilon} (y-x)P(dy,t|x,s)=b(x,s)(t-s)+o(t-s),
+        \end{equation}        
+        uniformly over $s<t$.
+        \item \textbf{(Definition of diffusion coefficient)} There exists a function $\Sigma(x,s)$ such that for every $x$ and every $\epsilon>0$,
+        \begin{equation}
+            \int_{|x-y|\leq \epsilon} (y-x)^2P(dy,t|x,s)=\Sigma(x,s)(t-s)+o(t-s),
+        \end{equation}        
+        uniformly over $s<t$.      
+    \end{enumerate}
+\end{definition}
+\begin{theorem}\textbf{(Kolmogorov)}
+    Assume that the stochastic diffusion process $X_t$ is Markov and that $p(y,t|\cdot,\cdot),b(y,t),\Sigma(y,t)$ are smooth functions of $y,t$. Then the transition probability density is the solution to the initial value problem
+    \begin{equation}
+        \partial_t p = -\partial_y (b(y,t) p)+\frac{1}{2}\partial_{yy}(\Sigma(y,t)p), \quad p(y,0|x,0)=\delta(y-x).
+        \label{fke}
+    \end{equation}
+\end{theorem}
+
+Assume now that the initial distribution of $X_t$ is $\rho_0(x)$, and set $s=0$ in \eqref{fke}. Define
+\begin{equation}
+    p(y,t)=\int p(y,t|x,0)\rho_0(x)dx.
+    \label{fke density}
+\end{equation}
+We multiply the forward Kolmogorov equation \eqref{fke} by $\rho_0(x)$ and integrate with respect to $x$ to obtain the equation
+\begin{equation}
+    \partial_t p(y,t)= -\partial_t (b(y,t) p(y,t))+\frac{1}{2}\partial_{yy} (\Sigma(y,t)p(y,t)),
+\end{equation}
+together with the initial condition
+\begin{equation}
+    p(y,0)=\rho_0(y)
+\end{equation}
+
+\section{SDE}
+We consider SDEs of the form
+\begin{equation}
+    \frac{dX(t)}{dt} = b(X(t))+\sigma(X(t))\xi(t), \qquad X(0)=x, \label{eq:sde}
+\end{equation}
+where $X(t) \in \mathbb{R}^d$, $b:\mathbb{R}^d \to \mathbb{R}^d$, and $\sigma:\mathbb{R}^d \to \mathbb{R}^{d\times m}$. we use the notation $\xi (t) = \frac{dW}{dt}$ to denote (formally) the derivative of Brownian motion in $\mathbb{R}^m$, i.e., the white noise process, which is a (generalised) mean-zero Gaussian vector-value stochastic process with covariance function
+$$\mathbb{E}(\xi_i(t)\xi_j(s) = \delta_{ij} \delta(t-s), \quad i,j=1,2,\dots,m.$$
+The initial condition $x$ can be either deterministic or a random variable that is independent of the Brownian motion $W(t)$.
+
+The amplitude of the noise in \eqref{eq:sde} may be independent of the state of the system, $\sigma(x) \equiv  \sigma$, a constant, in which case we will say that the noise in \eqref{eq:sde} is \textit{additive}. When the amplitude of the noise depends on the sate of the system, we will say that the noise in \eqref{eq:sde} is \textit{multiplicative}.
+
+Since the white noise process $\xi(t)$ is defined only in a generalised sense,  Eq.\eqref{eq:sde} is only formal. We will usually write it in the form
+\begin{equation}
+    dX(t)= b(X(t))dt+\sigma(X(t))dW(t),
+    \label{eq:sdeW}
+\end{equation}
+together with the initial condition $X(0)=x$. In fact the correct interpretation of the SDE \eqref{eq:sdeW} is as a stochastic integral equation
+\begin{equation}
+    X(t)=x+\int_0^t b(X(t))dt+\int_0^t \sigma(X(t)) dW(t)\label{eq:int}
+\end{equation}
+\subsection*{The Ito and Stratonovich Stochastic Integrals}
+We will define stochastic integrals of the form
+\begin{equation}
+    I(t)=\int_0^t f(s)dW(s), \label{eq:ito}
+\end{equation}
+where $W(t)$ is a standard one-dimensional Brownian motion and $t\in [0,T]$. 
+Our goal is to define the stochastic integral $I(t)$ as the $L^2$-limit of  a Riemann sum approximation of \eqref{eq:ito}. To this end, we introduce a partition of the interval $[0,T]$ by setting $t_k=k\Delta t$, $ k=0,\dots,K-1,$ and $K\Delta t=t$;
+we also define a parameter $\lambda \in [0,1]$ and set
+\begin{equation}
+    \tau_k = (1-\lambda)t_k+\lambda t_{k+1},\qquad k=0,1,\dots,K-1.
+    \label{eq: tau}
+\end{equation}
+We define now the stochastic integral as the $L^2(\Omega)$ limit ($\Omega$ denoting the underlying probability space) of the Riemann sum approximation
+\begin{equation}
+    I(t):=\lim_{K \to \infty} \sum_{k=0}^{K-1} f(\tau_k)(W(t_{k+1})-W(t_k)).
+    \label{eq:sum ito}
+\end{equation}
+In contrast to the case of the Riemann-Stieltjes integral, when we integrate against a smooth deterministic function, the result in \eqref{eq:sum ito} depends on the choice of $\lambda \in [0,1]$ in \eqref{eq: tau}. The two most common choices are $\lambda=0$, in which case we obtain the \textit{Ito stochastic integral}
+\begin{equation}
+    I_I(t) := \lim_{K\to \infty}\sum_{k=0}^{K-1} f(\tau_k)(W(t_{k+1})-W(t_k)),
+    \label{eq:lim ito}
+\end{equation}
+and $\lambda=\frac{1}{2}$, which leads to the \textit{Stratonovich stochastic integral }
+\begin{equation}
+    I_S(t):=\lim_{K \to \infty} \sum_{k=0}^{K-1} f\big(\frac{1}{2}(t_k+t_{k+1})\big)(W(t_{k+1})-W(t_k)).
+\end{equation}
+We will use the notation 
+$$I_S(t) = \int_0^t f(s) \circ d W(s)$$
+to denote the stratonovich stochastic integral. In general, the Ito and Stratonovich stochastic integrals are different. When the integrand $f(t)$ depends on the Brownian motion $W(t)$ through $X(t)$, the solution of the SDE in \eqref{eq:sde}, a formula exists for converting one stochastic integral into another.
+When the integrand in \eqref{eq:lim ito} is a sufficiently smooth function, then the stochastic integral is independent of the parameter $\lambda$, and in particular, the Ito and Stratonovich stochastic integrals coincide.
+
+The Ito stochastic integral $I(t)$ is continuous almost surely in $t$. As expected, it satisfies the linearity property
+$$\int_0^T \big(\alpha f(t)+\beta g(t)\big)dW(t)= \alpha \int_0^T f(t)dW(t)+\beta \int_0^T g(t)dW(t),\qquad \alpha,\beta\in \mathbb{R,}$$
+for all square-integrable functions $f(t),g(t)$. Furthermore, the Ito stochastic integral satisfies the Ito \textit{isometry}
+$$\mathbb{E}\big(\int_0^Tf(t)dW(t)\big)^2 = \int_0^T \mathbb{E}|f(t)|^2dt,$$
+from which it follows that for all square-integrable functions $f,g$
+$$\mathbb{E}\big(\int_0^Th(t)dW(t)\int_0^Tg(s)dW(s)\big) = \mathbb{E}\int_0^Th(t)g(t)dt.$$
+The Ito stochastic integral is a \textit{martingale}:
+\begin{definition}
+    Let $\{ \mathcal{F_t} \}_{t\in [0,T]}$ be a filtration defined on the probability space $(\Omega,\mathcal{F},\mu)$, and let $\{ \mathcal{M}_t\}_{t \in [0,T]}$ be adapted to $\mathcal{F}_t$ with $\mathcal{M}_t \in L^1(0,T)$. We say that $\mathcal{M}_t$ is an $\mathcal{F}_t$ martingale if
+    $$\mathbb{E}[\mathcal{M}_t|\mathcal{F}_s] = \mathcal{M}_s, \quad \forall t\geq s.$$
+\end{definition}
+For the Ito stochastic integral, we have
+\begin{equation}
+    \mathbb{E}\int_0^Tf(s)dW(s)=0
+\end{equation}
+and
+\begin{equation}
+    \mathbb{E}\Big[\int_0^T f(l)dW(l)|\mathcal{F}_s \Big] = \int_0^sf(l)dW(l) \quad \forall t\geq s,
+\end{equation}
+where $\mathcal{F}_s$ denotes the filtration generated by $W(s)$.
+\subsection*{Ito's formula}
+Consider the Ito SDE
+\begin{equation}
+    dX_t=b(X_t)dt+\sigma(X_t)dW_t \label{eq:ito sde}
+\end{equation}
+where for simplicity, we have assumed that the coefficients are independent of time. Here $X_t$ is a diffusion process with drift $b(x)$ and diffusion matrix
+$$\Sigma(x)=\sigma(x)\sigma(x)^T.$$
+The generator $\mathcal{L}$ is then defined as 
+\begin{equation}
+    \mathcal{L} = b(x)\cdot \nabla +\frac{1}{2}\Sigma(x):D^2,
+    \label{eq:generator}
+\end{equation}
+where $D^2$ denotes the Hessian matrix. The generator canalso be written as
+\begin{equation}
+    \mathcal{L} = \sum_{j=1}^{d} b_j(x)\frac{\partial}{\partial x_j} +\frac{1}{2}\sum_{i,j=1}^d \frac{\partial^2}{\partial x_i \partial x_j}.
+\end{equation}
+We can now write Ito formula using the generator. This formula enables us to calculate the rate of change in time of functions $V: [0,T] \times \mathbb{R}^d\to \mathbb{R}$ evaluated at the solution of an $\mathbb{R}^d$-valued SDE. First, recall that in the absence of noise, the rate of change of $V$ can be written as 
+\begin{equation}
+    \frac{d}{dt}V(t,x(t))=\frac{\partial V}{\partial t}(t,x(t))+\phi V(t,x(t),
+\end{equation}
+where $x(t)$ is the solution of the ODE $\dot{x} = b(x)$, and $\phi$ denotes the (backward) \textit{Liouville operator} 
+\begin{equation}
+    \phi = b(x) \cdot \nabla.
+    \label{liou}
+\end{equation}
+Let now $X_t$ be the solution of \eqref{eq:ito sde} and assume that the white noise $W$ is replaced by a smooth function $\xi(t)$. Then the rate of change of $V(t,X_t)$ is given by the formula
+\begin{equation}
+    \frac{d}{dt}V(t,X_t) = \frac{\partial V}{\partial t}(t,X_t)+\phi V(t,X_t)+ \left< \nabla V(t,X_t), \sigma (X_t) \xi(t) \right>
+    \label{eq:leib}
+\end{equation}
+This formula is no longer valid when \eqref{eq:ito sde} is driven by white noise and not a smooth function. In particular, the Leibniz formula \eqref{eq:leib} has to be modified by the addition of a drift term that accounts for the lack of smoothness of the noise: the Liouville operator $\phi$ given by \eqref{liou} in \eqref{eq:leib} has to be replaced by the generator $\mathcal{L}$ given by \eqref{eq:generator}. Formally we can write
+\begin{equation}
+    \frac{d}{dt}V(t,X_t) = \frac{\partial V}{\partial t}(t,X_t)+\mathcal{L} V(t,X_t)+ \left< \nabla V(t,X_t), \sigma (X_t) \frac{dW}{dt} \right>  
+\end{equation}
+The precise interpretation of the expression for the rate of change of $V$ is in integrated form.
+\begin{theorem}\textbf{(Ito's Formula)}
+    Assume that . Let $X_t$ be the solution of \eqref{eq:ito sde}, and let $V \in C^{1,2}([0,T]\times \mathbb{R}^d)$. Then the process $V(X_t)$ satisfies
+    \begin{align*}
+        V(t,X_t) &=V(X_0)+\int_0^T\frac{\partial V}{\partial s}(s,X_s)ds +\int_0^T \mathcal{L} V(s,X_s)ds\\
+        &+\int_0^T \left< \nabla V(t,X_t), \sigma (X_t) \frac{dW}{dt} \right>  
+    \end{align*}
+\end{theorem}
+
+\subsection*{derivation of the Fokker-Planck Equation}
+The Fokker-Planck operator corresponding to the SDE \eqref{eq:ito sde} reads
+\begin{equation}
+    \mathcal{L}^*\cdot := \nabla \cdot \big(-b(x) \cdot+\frac{1}{2}\nabla\cdot (\Sigma \cdot) \big).
+\end{equation}
+We can derive this formula from the formula for the generator $\mathcal{L}$ of $X_t$ and two integration by parts:
+$$\int_{\mathbb{R}^d} \mathcal{L}fh dx = \int_{\mathbb{R}^d}f \mathcal{L}^*h dx,$$
+for all $f,h \in C_0^2(\mathbb{R}^d).$
+\begin{proposition}
+    Let $X_t$ denote the solution of the Ito SDE \eqref{eq:ito sde} and assume that the initial condition $X_0$ is a random variable, independent of the Brownian motion driving the SDE, with density $\rho_0(x)$. Assume that the law of the Markov process $X_t$ has a density $\rho(x,t) \in C^{2,1}(\mathbb{R}^d\times (0,+\infty)).$ Then $\rho$ is the solution of the initial value problem for the Fokker-Planck equation
+    \begin{equation}
+        \partial_t \rho = \mathcal{L}^* \rho \quad \forall (x,t) \in \mathbb{R}^d \times(0,\infty),
+    \end{equation}
+    \begin{equation}
+        \rho = \rho_0 \qquad \forall x\in \mathbb{R}^d\times\{0\}
+    \end{equation}
+\end{proposition}
+
+
+
+\section{Examples of SDEs}
+\begin{example}\textbf{(Brownian Motion)}
+    We consider an SDE with no drift and constant diffusion coefficient:
+    \begin{equation}
+        dX_t = \sqrt{2\sigma}dW_t, \quad X_0=x,\label{eq: brown}
+    \end{equation}
+    where the initial condition can be either deterministic or random, independent of the Brownian motion $W_t$. The solution is 
+    $$X_t = x+\sqrt{2\sigma} W_t.$$
+    This is just Brownian motion starting at $x$ with diffusion coefficient $\sigma$
+\end{example}
+\begin{example}\textbf{(Ornstein-Uhlenbeck Process)}
+    Adding a restoring force to \eqref{eq: brown}, we obtain the SDE for the Ornstein-Uhlenbeck process that we have already encountered:
+    \begin{equation}
+        dX_t = \alpha X_tdt+\sqrt{2\sigma}dW_t, \quad X(0)=x,
+    \end{equation}
+    with $\alpha > 0 $ and where, as in the previous example, the initial condition can be either deterministic or random, independent of the Brownian motion $W_t$. We solve this equation using the variation of constant formula:
+    \begin{equation}
+        X_t = e^{-\alpha t}x +\sqrt{2\sigma}\int_0^t e^{-\alpha(t-s)}dW_s.
+    \end{equation}
+    The generator is 
+    $$\mathcal{L} = -  \alpha x\frac{d}{dx}+\sigma\frac{d^2}{dx^2}.$$
+\end{example}
+    
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Pictures}
+
+
+\begin{figure}[htbp]
+    \center
+    \includegraphics[scale=0.06]{img/photo.jpg}
+    \caption{Sydney, NSW}
+\end{figure}
+
+
+
+\subsection{Citation}
+
+This is a citation\cite{Eg}.
+
+\newpage
+
+% ------------------------------------------------------------------------------
+% Reference and Cited Works
+% ------------------------------------------------------------------------------
+
+\bibliographystyle{IEEEtran}
+\bibliography{References.bib}
+
+% ------------------------------------------------------------------------------
+
+\end{document}
