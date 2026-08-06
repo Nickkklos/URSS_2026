@@ -30,14 +30,7 @@ $$
 
 whose probability density satisfies
 
-$$
-\rho_t
-
-= 
-\kappa,\partial_x(x\rho)
-+
-D,\partial_{xx}\rho.
-$$
+$$ \rho_t = \kappa,\partial_x(x\rho) + D,\partial_{xx}\rho.$$
 
 Because the exact density is known analytically, this model provides a controlled benchmark for comparing the recovered coefficients with the true values $\kappa$ and $D$.
 
@@ -64,8 +57,7 @@ The recovered equations are assessed using their selected terms, coefficient err
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | `ou_fd.py`                                         | Reusable finite-difference solver for the Ornstein–Uhlenbeck Fokker–Planck equation                                                      |
 | `ou_em.py`                                         | Euler–Maruyama simulator and histogram-density constructor                                                                               |
-| `week_1.ipynb`                                     | Mathematical background, finite-difference and Euler–Maruyama methods, convergence tests, and preliminary double-well experiments        |
-| `week_1_external_solvers.ipynb`                    | Refactored version of the Week 1 experiments using `ou_fd.py` and `ou_em.py`                                                             |
+| `week_1_external_solvers.ipynb`                    | Mathematical background, finite-difference and Euler–Maruyama methods, and convergence tests.                                            |         
 | `week_5.ipynb`                                     | Combined exploratory workflow for exact, finite-difference, and Euler–Maruyama density identification                                    |
 | `week_6_Exact.ipynb`                               | Pointwise SINDy identification using the exact Ornstein–Uhlenbeck density                                                                |
 | `week_6_FD.ipynb`                                  | Pointwise SINDy identification using finite-difference density data and different candidate libraries                                    |
@@ -78,7 +70,8 @@ The recovered equations are assessed using their selected terms, coefficient err
 A suggested reading order is:
 
 1. `week_1_external_solvers.ipynb`;
-2. `week_6_Exact.ipynb`;
-3. `week_6_FD.ipynb`;
-4. `week_7_em.ipynb`.
+2. `week_5.ipynb`;
+3. `week_6_Exact.ipynb`;
+4. `week_6_FD.ipynb`;
+5. `week_7_em.ipynb`.
 
