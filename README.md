@@ -8,15 +8,9 @@ The project investigates whether the governing Fokker–Planck equation can be r
 
 A general one-dimensional Fokker–Planck equation has the form
 
-$$
-\frac{\partial \rho}{\partial t}
-================================
 
--\frac{\partial}{\partial x}\bigl(b(x)\rho\bigr)
-+
-\frac{1}{2}
-\frac{\partial^2}{\partial x^2}\bigl(\sigma^2(x)\rho\bigr),
-$$
+$$\frac{\partial \rho}{\partial t} = -\frac{\partial}{\partial x}\bigl(b(x)\rho\bigr) +\frac{1}{2} \frac{\partial^2}{\partial x^2}\bigl(\sigma^2(x)\rho\bigr),$$
+
 
 where
 
@@ -38,8 +32,8 @@ whose probability density satisfies
 
 $$
 \rho_t
-======
 
+= 
 \kappa,\partial_x(x\rho)
 +
 D,\partial_{xx}\rho.
@@ -79,19 +73,7 @@ The recovered equations are assessed using their selected terms, coefficient err
 | `FD_OU/`                                           | Derivation of the finite-difference scheme and zero-flux boundary treatment                                                              |
 | `Stochastic_process_and_FPE_background_knowledge/` | Background notes on stochastic processes and Fokker–Planck equations                                                                     |
 
-## Running the Notebooks
 
-The experiments were developed using Python 3.11.
-
-Clone the repository and install the main dependencies:
-
-```bash
-git clone https://github.com/Nickkklos/URSS_2026.git
-cd URSS_2026
-
-python -m pip install numpy scipy pandas matplotlib pysindy jupyterlab
-jupyter lab
-```
 
 A suggested reading order is:
 
@@ -100,20 +82,3 @@ A suggested reading order is:
 3. `week_6_FD.ipynb`;
 4. `week_7_em.ipynb`.
 
-## Preliminary Findings
-
-The experiments show that Weak-SINDy performance depends jointly on
-
-* the number $K$ of sampled weak equations;
-* the size of the space–time subdomains;
-* the number of terms in the candidate library.
-
-Small subdomains may not sufficiently average the fluctuations in Euler–Maruyama histogram data. Very large subdomains suppress noise more strongly, but may also make different candidate terms difficult to distinguish. Consequently, a small weak residual does not necessarily imply that the correct PDE has been identified.
-
-In the current single-seed parameter sweep, a subdomain full width equal to $25%$ of each complete space–time axis is the most robust common choice for both candidate libraries. Increasing $K$ is not automatically beneficial and cannot fully compensate for an unsuitable subdomain size.
-
-These numerical ranges are specific to the current data resolution, regression threshold, and random seed, and will be tested further using repeated samples.
-
-## Current Scope
-
-The Ornstein–Uhlenbeck equation is used as the main identification benchmark. Preliminary numerical experiments for a double-well model are also included, with extension of the full identification workflow to more complex drift fields forming a natural next step.
