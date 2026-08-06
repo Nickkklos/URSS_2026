@@ -34,7 +34,7 @@ $$dX_t = -\kappa X_t \, dt+ \sqrt{2D} \,dW_t$$
 
 and the associated Fokker-Planck equation is
 
-$$\rho_t = \kappa \patial_x(x\rho)+ D \patial_{xx}\rho.$$
+$$\rho_t = \kappa \partial_x(x\rho)+ D \partial_{xx}\rho.$$
 
 The main tasks are:
 
