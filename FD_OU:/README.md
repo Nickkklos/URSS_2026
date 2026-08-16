@@ -47,7 +47,7 @@ contribution.
 
 - [`FD_OU.tex`](FD_OU.tex): LaTeX source containing the derivation.
 - [`FD_OU.pdf`](FD_OU.pdf): Compiled version of the derivation.
-- [`week_1.ipynb`](../week_1.ipynb): Python implementation of the numerical scheme.
+- [`week_1_data.ipynb`](../week_1_data.ipynb): Python implementation of the numerical scheme.
 
 ## Purpose
 
