@@ -119,23 +119,7 @@ Run notebooks from the repository root so that the local modules `ou_fd.py` and 
 
 The stochastic and weak-subdomain experiments use explicit random seeds. A single seed gives a reproducible realisation, not an uncertainty estimate; repeated-seed statistics should be used for stronger claims.
 
-## Camera-aware interpretation of Week 9
 
-For independent Gaussian localisation noise with variance $\sigma_{\rm loc}^2$, the marginal observed OU density has the same drift rate but effective diffusion
-
-$$
-D_{\rm loc}=D+\kappa\sigma_{\rm loc}^2.
-$$
-
-For a continuous top-hat exposure of length $\Delta$, the motion-blurred marginal density also remains in the OU family, with
-
-$$
-D_{\rm blur}
-=\frac{2D}{\kappa^2\Delta^2}
-\left(\kappa\Delta-1+e^{-\kappa\Delta}\right).
-$$
-
-For the current parameters, $D_{\rm blur}\approx0.9868$, $D_{\rm loc}=1.0200$, and $D_{\rm blur+loc}\approx1.0068$. This explains why motion blur appears to improve agreement with the physical value $D=1$: its negative observation bias partly cancels the positive baseline estimation error. It is better interpreted as predictable coefficient renormalisation than as error removal.
 
 ## References
 
