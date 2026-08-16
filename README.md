@@ -83,7 +83,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 | --- | --- |
 | `ou_fd.py` | Reusable finite-difference solver for the OU Fokker-Planck equation |
 | `ou_em.py` | Reusable Euler-Maruyama simulator and histogram-density constructor |
-| `week_1_external_solvers.ipynb`  | Original self-contained background, solvers, and convergence experiments |
+| `week_1_data.ipynb`  | Original self-contained background, solvers, and convergence experiments |
 | `week_5.ipynb` | Exploratory exact, finite-difference, Euler-Maruyama, and weak-form workflow |
 | `week_6_Exact.ipynb` | Pointwise SINDy on the exact OU density |
 | `week_6_FD.ipynb` | Pointwise SINDy on finite-difference density with several candidate libraries |
@@ -95,7 +95,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 
 ## Suggested reading order
 
-1. `week_1_external_solvers.ipynb`
+1. `week_1_data.ipynb`
 2. `week_5.ipynb`
 3. `week_6_Exact.ipynb`
 4. `week_6_FD.ipynb`
