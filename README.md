@@ -2,6 +2,8 @@
 
 This repository contains the mathematical derivations, numerical solvers, and equation-discovery experiments from my 2026 Undergraduate Research Support Scheme (URSS) project at the University of Warwick, supervised by Dr Radu Cimpeanu.
 
+**Poster:** [`poster/URSS2026_poster.pdf`](poster/URSS2026_poster.pdf)
+
 The project asks whether a Fokker-Planck equation can be recovered directly from probability-density data by sparse regression, and how reliable that recovery remains when the density is estimated from stochastic trajectories and affected by realistic observation errors.
 
 ## Research question
@@ -66,6 +68,19 @@ Two sparse-identification approaches are studied:
 
 The recovered model is assessed using support recovery, identified coefficients, relative coefficient error, weak regression residual, and agreement with the exact time derivative when that reference is available.
 
+## Key results
+
+Numbers are taken from the saved notebook outputs.
+
+| Data | Method and library | Outcome |
+| --- | --- | --- |
+| Finite-difference density | Pointwise SINDy, conservative library | $\hat\kappa=0.999918$, $\hat D=0.999975$ (true values 1) |
+| Finite-difference density | Pointwise SINDy, library with algebraically dependent terms | Individual coefficients are not unique (0.377, 0.377, 0.623), but the equivalent coefficients of $\rho$ and $x\rho_x$ are 0.99994 and 0.99992 |
+| Euler-Maruyama histograms, 60,000 paths (one dataset, seed 319) | Weak SINDy, 25% test-function width | Correct support in 12/12 settings (weak-subdomain seeds 319, 801, 2002 and $K=100,250,500,750$) for both the 5- and 15-term libraries; relative coefficient error 0.15-1.5% |
+| Same data | Weak SINDy, 10% width | Correct support in 6/12 settings (5-term library) and 0/12 (15-term library) |
+| Same data | Weak SINDy, 15-term library, 75% width | Median weak residual $5.4\times10^{-4}$, about 100 times smaller than at 25%, yet correct support in 0/12 settings: a small residual does not certify the PDE |
+| Camera errors (clean, motion blur, localisation noise, both) | Weak SINDy, $K=500$, 25% width, both libraries | Correct support in all four conditions; identified $D$ = 1.017, 1.003, 1.039, 1.025 against camera-aware references 1.000, 0.987, 1.020, 1.007 |
+
 ## Main findings
 
 - Pointwise SINDy accurately recovers the OU equation from smooth exact and finite-difference densities.
@@ -83,15 +98,14 @@ These results demonstrate robustness within the tested regime; they are not yet 
 | --- | --- |
 | `ou_fd.py` | Reusable finite-difference solver for the OU Fokker-Planck equation |
 | `ou_em.py` | Reusable Euler-Maruyama simulator and histogram-density constructor |
-| `week_1_data.ipynb`  | Original self-contained background, solvers, and convergence experiments |
+| `week_1_data.ipynb` | Numerical validation of the exact, finite-difference, and Euler-Maruyama densities using `ou_fd.py` and `ou_em.py` |
 | `week_5.ipynb` | Exploratory exact, finite-difference, Euler-Maruyama, and weak-form workflow |
 | `week_6_Exact.ipynb` | Pointwise SINDy on the exact OU density |
 | `week_6_FD.ipynb` | Pointwise SINDy on finite-difference density with several candidate libraries |
 | `week_7_em.ipynb` | Weak-SINDy identification from Euler-Maruyama histograms; library, $K$, and subdomain-width comparisons |
 | `week_9_OU_camera_errors.ipynb` | Trajectory-level motion blur and localisation noise followed by Weak-SINDy identification |
 | `FD_OU/` | Derivation of the finite-difference scheme and zero-flux boundary treatment |
-| `Stochastic_process_and_FPE_background_knowledge/` | Background notes on stochastic processes and Fokker-Planck equations |
-| `poster/` | Editable LaTeX poster source and figure assets |
+| `poster/` | URSS 2026 poster (PDF) |
 
 ## Suggested reading order
 
@@ -104,7 +118,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 
 ## Running the notebooks
 
-The notebooks were developed with Python 3.11. A minimal environment requires NumPy, SciPy, pandas, Matplotlib, PySINDy, JupyterLab, and IPython.
+The notebooks were run with Python 3.11.15. A minimal environment requires NumPy, SciPy, pandas, Matplotlib, PySINDy, JupyterLab, and IPython. `ou_fd.py` uses `numpy.trapezoid`, so NumPy 2.0 or later is required. The saved notebooks use a Jupyter kernel named `urss-pysindy`; any kernel from this environment works.
 
 ```bash
 python -m venv .venv
@@ -116,7 +130,7 @@ jupyter lab
 
 Run notebooks from the repository root so that the local modules `ou_fd.py` and `ou_em.py` can be imported. For a reproducibility check, restart the kernel and use **Run All** rather than relying on variables left from an earlier session.
 
-The stochastic and weak-subdomain experiments use explicit random seeds. A single seed gives a reproducible realisation, not an uncertainty estimate; repeated-seed statistics should be used for stronger claims.
+The stochastic and weak-subdomain experiments use explicit random seeds. In `week_7_em.ipynb` the Euler-Maruyama data use seed 319 and the weak-subdomain sweeps use seeds 319, 801, and 2002. In `week_9_OU_camera_errors.ipynb` the trajectory, camera-noise, and weak-subdomain seeds are 319, 801, and 2002. A single seed gives a reproducible realisation, not an uncertainty estimate; repeated-seed statistics should be used for stronger claims.
 
 
 
