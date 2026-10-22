@@ -1,0 +1,7 @@
+# tested with Python 3.11.15
+numpy==2.4.6
+scipy==1.16.3
+pandas==3.0.5
+matplotlib==3.11.1
+scikit-learn==1.9.0
+pysindy==2.1.0
