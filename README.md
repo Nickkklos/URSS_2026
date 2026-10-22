@@ -83,15 +83,15 @@ Numbers are taken from the saved notebook outputs.
 
 ![Exact, finite-difference and Euler-Maruyama densities at t = 0.5](figures/ou_density_comparison.png)
 
-*Exact, finite-difference and Euler-Maruyama (60,000 paths) densities at $t=0.5$ (`week_1_data.ipynb`).*
+*Exact, finite-difference and Euler-Maruyama (60,000 paths) densities at t = 0.5 (`week_1_data.ipynb`).*
 
 ![Correct-support rate and median coefficient error of weak SINDy against test-function width](figures/weak_support_recovery.png)
 
-*Weak SINDy on one Euler-Maruyama dataset: correct-support rate and median coefficient error over 12 settings per width ($K=100,250,500,750$; weak-subdomain seeds 319, 801, 2002) (`week_7_em.ipynb`).*
+*Weak SINDy on one Euler-Maruyama dataset: correct-support rate and median coefficient error over 12 settings per width (K = 100, 250, 500, 750; weak-subdomain seeds 319, 801, 2002) (`week_7_em.ipynb`).*
 
 ![Recovered kappa and D under four camera observation conditions](figures/camera_effective_diffusion.png)
 
-*Recovered $\kappa$ and $D$ under camera observation errors ($K=500$, 25% width): $\hat\kappa$ is essentially unchanged, while $\hat D$ moves with the camera-aware reference (`week_9_OU_camera_errors.ipynb`).*
+*Recovered κ and D under camera observation errors (K = 500, 25% width): the recovered κ is essentially unchanged, while the recovered D moves with the camera-aware reference (`week_9_OU_camera_errors.ipynb`).*
 
 ## Main findings
 
