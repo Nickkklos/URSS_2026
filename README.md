@@ -81,6 +81,18 @@ Numbers are taken from the saved notebook outputs.
 | Same data | Weak SINDy, 15-term library, 75% width | Median weak residual $5.4\times10^{-4}$, about 100 times smaller than at 25%, yet correct support in 0/12 settings: a small residual does not certify the PDE |
 | Camera errors (clean, motion blur, localisation noise, both) | Weak SINDy, $K=500$, 25% width, both libraries | Correct support in all four conditions; identified $D$ = 1.017, 1.003, 1.039, 1.025 against camera-aware references 1.000, 0.987, 1.020, 1.007 |
 
+![Exact, finite-difference and Euler-Maruyama densities at t = 0.5](figures/ou_density_comparison.png)
+
+*Exact, finite-difference and Euler-Maruyama (60,000 paths) densities at $t=0.5$ (`week_1_data.ipynb`).*
+
+![Correct-support rate and median coefficient error of weak SINDy against test-function width](figures/weak_support_recovery.png)
+
+*Weak SINDy on one Euler-Maruyama dataset: correct-support rate and median coefficient error over 12 settings per width ($K=100,250,500,750$; weak-subdomain seeds 319, 801, 2002) (`week_7_em.ipynb`).*
+
+![Recovered kappa and D under four camera observation conditions](figures/camera_effective_diffusion.png)
+
+*Recovered $\kappa$ and $D$ under camera observation errors ($K=500$, 25% width): $\hat\kappa$ is essentially unchanged, while $\hat D$ moves with the camera-aware reference (`week_9_OU_camera_errors.ipynb`).*
+
 ## Main findings
 
 - Pointwise SINDy accurately recovers the OU equation from smooth exact and finite-difference densities.
@@ -91,6 +103,15 @@ Numbers are taken from the saved notebook outputs.
 - Camera errors do not leave the observed density unchanged. In the linear-Gaussian OU setting they preserve the two-term OU structure but alter the effective diffusion coefficient. The Week 9 coefficients should therefore be compared with a camera-aware reference as well as with the underlying physical value $D=1$.
 
 These results demonstrate robustness within the tested regime; they are not yet a universal camera-error robustness claim. Multi-seed and multi-noise-level sweeps remain important follow-up tests.
+
+## My contribution
+
+- Implemented the finite-difference solver with zero-flux ghost-point boundaries (`ou_fd.py`) and the Euler-Maruyama simulator and histogram-density constructor (`ou_em.py`), and validated both against the exact OU density.
+- Designed and ran the identification experiments: pointwise vs weak SINDy; conservative, expanded and algebraically dependent libraries; sweeps over $K$, test-function width and weak-subdomain seeds; trajectory-level camera-error models.
+- Analysed the non-identifiability of the mixed library and compared recovered coefficients with a camera-aware reference based on Berglund (2010).
+- Wrote the finite-difference derivation in `FD_OU/` and the poster.
+
+Sparse regression uses [PySINDy](https://github.com/dynamicslab/pysindy) (`STLSQ`, `WeakPDELibrary`, `FiniteDifference`; references 5 and 6). Generative AI was used to assist with parts of the coding and plotting.
 
 ## Repository structure
 
@@ -106,6 +127,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 | `week_9_OU_camera_errors.ipynb` | Trajectory-level motion blur and localisation noise followed by Weak-SINDy identification |
 | `FD_OU/` | Derivation of the finite-difference scheme and zero-flux boundary treatment |
 | `poster/` | URSS 2026 poster (PDF) |
+| `figures/` | Figures shown in this README, exported from the saved notebook outputs |
 | `requirements.txt` | Package versions used to run the notebooks |
 
 ## Suggested reading order
@@ -141,6 +163,8 @@ The stochastic and weak-subdomain experiments use explicit random seeds. In `wee
 2. S. H. Rudy, S. L. Brunton, J. L. Proctor, and J. N. Kutz, "Data-driven discovery of partial differential equations," *Science Advances*, 3(4), e1602614, 2017. [doi:10.1126/sciadv.1602614](https://doi.org/10.1126/sciadv.1602614)
 3. D. A. Messenger and D. M. Bortz, "Weak SINDy for partial differential equations," *Journal of Computational Physics*, 443, 110525, 2021. [doi:10.1016/j.jcp.2021.110525](https://doi.org/10.1016/j.jcp.2021.110525)
 4. A. J. Berglund, "Statistics of camera-based single-particle tracking," *Physical Review E*, 82, 011917, 2010. [doi:10.1103/PhysRevE.82.011917](https://doi.org/10.1103/PhysRevE.82.011917)
+5. B. M. de Silva et al., "PySINDy: A Python package for the sparse identification of nonlinear dynamical systems from data," *Journal of Open Source Software*, 5(49), 2104, 2020. [doi:10.21105/joss.02104](https://doi.org/10.21105/joss.02104)
+6. A. A. Kaptanoglu et al., "PySINDy: A comprehensive Python package for robust sparse system identification," *Journal of Open Source Software*, 7(69), 3994, 2022. [doi:10.21105/joss.03994](https://doi.org/10.21105/joss.03994)
 
 ## Acknowledgements
 
