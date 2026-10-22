@@ -11,7 +11,7 @@ The project asks whether a Fokker-Planck equation can be recovered directly from
 For the one-dimensional stochastic differential equation
 
 $$
-dX_t=b(X_t)\,dt+\sigma(X_t)\,dW_t,
+dX_t=b(X_t) dt+\sigma(X_t) dW_t,
 $$
 
 the probability density $\rho(x,t)$ satisfies
@@ -38,7 +38,7 @@ $$
 whose density satisfies the conservative Fokker-Planck equation
 
 $$
-\rho_t=\kappa\,\partial_x(x\rho)+D\rho_{xx}.
+\rho_t=\kappa \partial_x(x\rho)+D\rho_{xx}.
 $$
 
 The experiments use
