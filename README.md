@@ -32,7 +32,7 @@ The central question is:
 The main benchmark is
 
 $$
-dX_t=-\kappa X_t\,dt+\sqrt{2D}\,dW_t,
+dX_t=-\kappa X_t dt+\sqrt{2D} dW_t,
 $$
 
 whose density satisfies the conservative Fokker-Planck equation
