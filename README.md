@@ -87,7 +87,7 @@ Numbers are taken from the saved notebook outputs.
 
 ![Correct-support rate and median coefficient error of weak SINDy against test-function width](figures/weak_support_recovery.png)
 
-*Weak SINDy on one Euler-Maruyama dataset: correct-support rate and median coefficient error over 12 settings per width (K = 100, 250, 500, 750; weak-subdomain seeds 319, 801, 2002) (`week_7_em.ipynb`).*
+*Weak SINDy on one Euler-Maruyama dataset. Left: correct-support rate; right: median coefficient error. Each point pools 12 runs (weak-subdomain seeds 319, 801, 2002 × K = 100, 250, 500, 750); the per-seed figures are in `week_7_em.ipynb`.*
 
 ![Recovered kappa and D under four camera observation conditions](figures/camera_effective_diffusion.png)
 
