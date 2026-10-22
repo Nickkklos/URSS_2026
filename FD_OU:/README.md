@@ -47,15 +47,16 @@ contribution.
 
 - [`FD_OU.tex`](FD_OU.tex): LaTeX source containing the derivation.
 - [`FD_OU.pdf`](FD_OU.pdf): Compiled version of the derivation.
-- [`week_1_data.ipynb`](../week_1_data.ipynb): Python implementation of the numerical scheme.
+- [`ou_fd.py`](../ou_fd.py): Python implementation of the scheme.
+- [`week_1_data.ipynb`](../week_1_data.ipynb): validation against the exact OU density.
 
 ## Purpose
 
 The Ornstein--Uhlenbeck equation is used as an initial benchmark because its
 probability density is known analytically. This allows the finite-difference
-solution to be checked before applying the same workflow to the double-well
-Fokker--Planck equation.
+solution to be checked against the exact solution. Extending the workflow to a
+double-well potential is left for future work.
 
-The finite-difference density will later be compared with density estimates
-obtained from Euler--Maruyama simulations and Monte Carlo sampling.
+The finite-difference density is compared with Euler--Maruyama histogram
+densities in [`week_1_data.ipynb`](../week_1_data.ipynb).
 
