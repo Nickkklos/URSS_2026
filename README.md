@@ -106,6 +106,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 | `week_9_OU_camera_errors.ipynb` | Trajectory-level motion blur and localisation noise followed by Weak-SINDy identification |
 | `FD_OU/` | Derivation of the finite-difference scheme and zero-flux boundary treatment |
 | `poster/` | URSS 2026 poster (PDF) |
+| `requirements.txt` | Package versions used to run the notebooks |
 
 ## Suggested reading order
 
@@ -118,17 +119,17 @@ These results demonstrate robustness within the tested regime; they are not yet 
 
 ## Running the notebooks
 
-The notebooks were run with Python 3.11.15. A minimal environment requires NumPy, SciPy, pandas, Matplotlib, PySINDy, JupyterLab, and IPython. `ou_fd.py` uses `numpy.trapezoid`, so NumPy 2.0 or later is required. The saved notebooks use a Jupyter kernel named `urss-pysindy`; any kernel from this environment works.
+The notebooks were run with Python 3.11.15; `requirements.txt` lists the package versions used. `ou_fd.py` uses `numpy.trapezoid`, so NumPy 2.0 or later is required. The saved notebooks use a Jupyter kernel named `urss-pysindy`; any kernel from this environment works.
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install numpy scipy pandas matplotlib pysindy jupyterlab ipython
+python -m pip install -r requirements.txt jupyterlab
 jupyter lab
 ```
 
-Run notebooks from the repository root so that the local modules `ou_fd.py` and `ou_em.py` can be imported. For a reproducibility check, restart the kernel and use **Run All** rather than relying on variables left from an earlier session.
+Run notebooks from the repository root so that the local modules `ou_fd.py` and `ou_em.py` can be imported. For a reproducibility check, restart the kernel and use **Run All** rather than relying on variables left from an earlier session. `week_7_em.ipynb` was re-executed from a fresh kernel with the versions in `requirements.txt` (October 2026) and reproduced its saved tables exactly.
 
 The stochastic and weak-subdomain experiments use explicit random seeds. In `week_7_em.ipynb` the Euler-Maruyama data use seed 319 and the weak-subdomain sweeps use seeds 319, 801, and 2002. In `week_9_OU_camera_errors.ipynb` the trajectory, camera-noise, and weak-subdomain seeds are 319, 801, and 2002. A single seed gives a reproducible realisation, not an uncertainty estimate; repeated-seed statistics should be used for stronger claims.
 
