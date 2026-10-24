@@ -1,7 +1,7 @@
-# Finite Difference Method for the Ornstein--Uhlenbeck Fokker--Planck Equation
+# Finite Difference Method for the Ornstein–Uhlenbeck Fokker–Planck Equation
 
 This folder contains the derivation of a finite-difference scheme for the
-one-dimensional Ornstein--Uhlenbeck Fokker--Planck equation.
+one-dimensional Ornstein–Uhlenbeck Fokker–Planck equation.
 
 ## Model equation
 
@@ -52,11 +52,11 @@ contribution.
 
 ## Purpose
 
-The Ornstein--Uhlenbeck equation is used as an initial benchmark because its
+The Ornstein–Uhlenbeck equation is used as an initial benchmark because its
 probability density is known analytically. This allows the finite-difference
 solution to be checked against the exact solution. Extending the workflow to a
 double-well potential is left for future work.
 
-The finite-difference density is compared with Euler--Maruyama histogram
+The finite-difference density is compared with Euler–Maruyama histogram
 densities in [`week_1_data.ipynb`](../week_1_data.ipynb).
 
