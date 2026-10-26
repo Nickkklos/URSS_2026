@@ -78,7 +78,7 @@ Numbers are taken from the saved notebook outputs.
 | Finite-difference density | Pointwise SINDy, library with algebraically dependent terms | Individual coefficients are not unique (0.377, 0.377, 0.623), but the equivalent coefficients of $\rho$ and $x\rho_x$ are 0.99994 and 0.99992 |
 | Euler-Maruyama histograms, 60,000 paths (one dataset, seed 319) | Weak SINDy, 25% test-function width | Correct support in 12/12 settings (weak-subdomain seeds 319, 801, 2002 and $K=100,250,500,750$) for both the 5- and 15-term libraries; relative coefficient error 0.15-1.5% |
 | Same data | Weak SINDy, 10% width | Correct support in 6/12 settings (5-term library) and 0/12 (15-term library) |
-| Same data | Weak SINDy, 15-term library, 75% width | Median weak residual $5.4\times10^{-4}$, about 100 times smaller than at 25%, yet correct support in 0/12 settings: a small residual does not certify the PDE |
+| Same data | Weak SINDy, 15-term library, 75% width | Median relative weak residual $5.4\times10^{-4}$, about 100 times smaller than at 25%, yet correct support in 0/12 settings: a small residual does not certify the PDE |
 | Camera errors (clean, motion blur, localisation noise, both) | Weak SINDy, $K=500$, 25% width, both libraries | Correct support in all four conditions; identified $D$ = 1.017, 1.003, 1.039, 1.025 against camera-aware references 1.000, 0.987, 1.020, 1.007 |
 
 ![Exact, finite-difference and Euler-Maruyama densities at t = 0.5](figures/ou_density_comparison.png)
@@ -87,7 +87,7 @@ Numbers are taken from the saved notebook outputs.
 
 ![Correct-support rate and median coefficient error of weak SINDy against test-function width](figures/weak_support_recovery.png)
 
-*Weak SINDy on one Euler-Maruyama dataset. Left: correct-support rate; right: median coefficient error. Each point pools 12 runs (weak-subdomain seeds {319, 801, 2002} × {K = 100, 250, 500, 750}); the per-seed figures are in `week_7_em.ipynb`.*
+*Weak SINDy on one Euler-Maruyama dataset. Left: correct-support rate; right: median coefficient error. Each point pools 12 settings (weak-subdomain seeds {319, 801, 2002} × {K = 100, 250, 500, 750}); the per-seed figures are in `week_7_em.ipynb`.*
 
 ![Recovered kappa and D under four camera observation conditions](figures/camera_effective_diffusion.png)
 
