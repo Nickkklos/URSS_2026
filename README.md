@@ -111,7 +111,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 - Analysed the non-identifiability of the mixed library and compared recovered coefficients with a camera-aware reference based on Berglund (2010).
 - Wrote the finite-difference derivation in `FD_OU/` and the poster.
 
-Sparse regression uses [PySINDy](https://github.com/dynamicslab/pysindy) (`STLSQ`, `WeakPDELibrary`, `FiniteDifference`; references 5 and 6). Generative AI was used to assist with parts of the coding and plotting.
+Sparse regression uses [PySINDy](https://github.com/dynamicslab/pysindy) (`STLSQ`, `WeakPDELibrary`, `FiniteDifference`; references 5 and 6). Generative AI was used to assist with parts of the coding and plotting. The October 2026 revisions (documentation, README figures, poster corrections and repository clean-up) were made with the assistance of Claude (Anthropic).
 
 ## Repository structure
 
