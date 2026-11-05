@@ -76,7 +76,8 @@ Numbers are taken from the saved notebook outputs.
 | --- | --- | --- |
 | Finite-difference density | Pointwise SINDy, conservative library | $\hat\kappa=0.999918$, $\hat D=0.999975$ (true values 1) |
 | Finite-difference density | Pointwise SINDy, library with algebraically dependent terms | Individual coefficients are not unique (0.377, 0.377, 0.623), but the equivalent coefficients of $\rho$ and $x\rho_x$ are 0.99994 and 0.99992 |
-| Euler-Maruyama histograms, 60,000 paths (one dataset, seed 319) | Weak SINDy, 25% test-function width | Correct support in 12/12 settings (weak-subdomain seeds 319, 801, 2002 and $K=100,250,500,750$) for both the 5- and 15-term libraries; relative coefficient error 0.15-1.5% |
+| Euler-Maruyama histograms, 60,000 paths, bin width 0.1 (`week_5.ipynb`) | Pointwise SINDy, 6-term library | Wrong support: all six candidate terms are selected, with $\hat\kappa=0.315$ and $\hat D=0.0075$ (true values 1). Weak SINDy on the same histograms ($K=1000$, 10% width) selects only the two OU terms, with $\hat\kappa=0.965$ and $\hat D=0.961$ |
+| Euler-Maruyama histograms, 60,000 paths, bin width 0.2 (one dataset, seed 319; `week_7_em.ipynb`) | Weak SINDy, 25% test-function width | Correct support in 12/12 settings (weak-subdomain seeds 319, 801, 2002 and $K=100,250,500,750$) for both the 5- and 15-term libraries; relative coefficient error 0.15-1.5% |
 | Same data | Weak SINDy, 10% width | Correct support in 6/12 settings (5-term library) and 0/12 (15-term library) |
 | Same data | Weak SINDy, 15-term library, 75% width | Median relative weak residual $5.4\times10^{-4}$, about 100 times smaller than at 25%, yet correct support in 0/12 settings: a small residual does not certify the PDE |
 | Camera errors (clean, motion blur, localisation noise, both) | Weak SINDy, $K=500$, 25% width, both libraries | Correct support in all four conditions; identified $D$ = 1.017, 1.003, 1.039, 1.025 against camera-aware references 1.000, 0.987, 1.020, 1.007 |
@@ -111,7 +112,7 @@ These results demonstrate robustness within the tested regime; they are not yet 
 - Analysed the non-identifiability of the mixed library and compared recovered coefficients with a camera-aware reference based on Berglund (2010).
 - Wrote the finite-difference derivation in `FD_OU/` and the poster.
 
-Sparse regression uses [PySINDy](https://github.com/dynamicslab/pysindy) (`STLSQ`, `WeakPDELibrary`, `FiniteDifference`; references 5 and 6). Generative AI was used to assist with parts of the coding and plotting. The October 2026 revisions (documentation, README figures, poster corrections and repository clean-up) were made with the assistance of Claude (Anthropic).
+Sparse regression uses [PySINDy](https://github.com/dynamicslab/pysindy) (`STLSQ`, `WeakPDELibrary`, `FiniteDifference`; references 5 and 6). Generative AI was used to assist with parts of the coding and plotting. The October and November 2026 revisions (documentation, README figures, poster corrections and repository clean-up) were made with the assistance of Claude (Anthropic).
 
 ## Repository structure
 
